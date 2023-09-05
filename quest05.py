@@ -1,26 +1,26 @@
 class No:
-    def _init_(self, valor):
+    def __init__(self, valor):
         self.valor = valor
         self.esquerda = None
         self.direita = None
 
 class ArvoreBinaria:
-    def _init_(self):
+    def __init__(self):
         self.raiz = None
 
     def insere(self, valor):
         if self.raiz is None:
             self.raiz = No(valor)
         else:
-            self._insere_recursivamente(self.raiz,valor)
+            self._insere_recursivamente(self.raiz, valor)
 
     def _insere_recursivamente(self, no_atual, valor):
-        if valor < no_atual.chave:
+        if valor < no_atual.valor:
             if no_atual.esquerda is None:
                 no_atual.esquerda = No(valor)
             else:
                 self._insere_recursivamente(no_atual.esquerda, valor)
-        elif valor > no_atual.chave:
+        elif valor > no_atual.valor:
             if no_atual.direita is None:
                 no_atual.direita = No(valor)
             else:
@@ -43,14 +43,14 @@ class ArvoreBinaria:
 # Exemplo de uso:
 # Criar uma árvore binária
 arvore = ArvoreBinaria()
-arvore.insere(5)
+arvore.insere(10)
 arvore.insere(3)
-arvore.insere(8)
+arvore.insere(6)
 arvore.insere(2)
 arvore.insere(4)
-arvore.insere(7)
+arvore.insere(14)
 arvore.insere(9)
 
 # Realizar a travessia inordem
 valores_inordem = arvore.travessia_inordem()
-print(valores_inordem)  # Deve imprimir [2, 3, 4, 5, 7, 8, 9]
+print(valores_inordem)  # Deve imprimir [2, 3, 4, 6, 9, 10, 14]
